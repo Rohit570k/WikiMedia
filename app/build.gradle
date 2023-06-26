@@ -70,9 +70,11 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
 
-//    // Image Picker
-//    implementation 'com.github.dhaval2404:imagepicker:2.1'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //Room Database
+    def room_version = "2.5.1"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 }

@@ -1,21 +1,37 @@
 package com.example.wikimedia.data.models.Articles;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-
+@Entity(tableName = "pages")
 public class Pages {
+    @PrimaryKey
+    @ColumnInfo(name = "pageid")
     private int pageid;
+    @Ignore
     private int ns;
+    @ColumnInfo(name = "title")
     private String title;
+    @Ignore
     private List<Revisions> revisions;
+    @Ignore
     private List<Images> images;
+    @Embedded
     private Thumbnail thumbnail;
+    @ColumnInfo(name = "pageimage")
     private String  pageimage;
     @Expose
     @SerializedName("extract")
+    @ColumnInfo(name = "extracts")
     private String extracts;
+
 
     public Thumbnail getThumbnail() {
         return thumbnail;
