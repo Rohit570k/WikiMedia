@@ -71,4 +71,18 @@ public interface RetrofitApi {
             @Query("pithumbsize") int pithumbsize,
             @Query("gcmtitle") String gcmtitle
     );
+
+    //https://en.wikipedia.org/w/api.php?format=json&action=query&generator=images&prop=imageinfo|pageimages
+    // &pithumbsize=500&iiprop=url&titles=Template:POTD/2023-06-26
+
+    @GET("api.php?")
+    Observable<Response<ArticleResponse>> pictureOFTheDay(
+            @Query("format") String format,
+            @Query("action") String action,
+            @Query("generator") String generator,
+            @Query("prop") String prop,
+            @Query("pithumbsize") int pithumbsize,
+            @Query("titles") String titles
+    );
+
 }

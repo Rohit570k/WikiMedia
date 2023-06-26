@@ -4,16 +4,23 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.wikimedia.data.models.Articles.ArticleResponse;
+import com.example.wikimedia.data.models.Category.CategoryResponse;
+import com.example.wikimedia.data.repositories.ImagesRepo;
+
 public class ImagesViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
 
+    private ImagesRepo imagesRepo;
     public ImagesViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+       imagesRepo = new ImagesRepo();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<ArticleResponse> getPageOfTheDay(String date){
+        return imagesRepo.getPOTDLiveData(date);
+
+
     }
+
+
 }
