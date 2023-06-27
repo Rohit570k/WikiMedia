@@ -34,7 +34,7 @@ public class ImagesFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ImagesViewModel imagesViewModel =
+         imagesViewModel =
                 new ViewModelProvider(this, new ViewModelProvider.Factory() {
                     @NonNull
                     @Override
