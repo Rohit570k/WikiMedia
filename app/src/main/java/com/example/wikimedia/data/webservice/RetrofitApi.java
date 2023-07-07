@@ -3,6 +3,7 @@ package com.example.wikimedia.data.webservice;
 import com.example.wikimedia.data.models.Articles.ArticleResponse;
 import com.example.wikimedia.data.models.Category.CategoryResponse;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +29,8 @@ public interface RetrofitApi {
 //            @Query("explaintext") boolean explaintext,
             @Query("rvprop") String rvprop,
             @Query("grnlimit") int grnlimit,
-            @Query("pithumbsize") int pithumbsize
+            @Query("pithumbsize") int pithumbsize,
+            @Query("grncontinue") String continueParams
     );
 
     @GET("api.php?")
@@ -54,11 +56,13 @@ public interface RetrofitApi {
             @Query("action") String action,
             @Query("list") String list,
             @Query("acprefix") String acprefix,
-            @Query("formatversion") int formatversion
+            @Query("formatversion") int formatversion,
+            @Query("accontinue") String continueParams
     );
 
     //https://en.wikipedia.org/w/api.php?format=json&action=query&generator=categorymembers&
     // prop=extracts%7Cpageimages&exintro=&explaintext=&gcmtitle=Category:Indian%20film%20industries
+    //gcmcontinue=page|502a423a40042e3a4432422a0306502a423a40042e3a4432422a011d01dcc1dcc0dc0f|10749933
     @GET("api.php?")
     Observable<Response<ArticleResponse>> getCategoryMembersArticle(
             @Query("format") String format,
@@ -69,7 +73,8 @@ public interface RetrofitApi {
             @Query("exintro") boolean exintro,
             @Query("explaintext") boolean explaintext,
             @Query("pithumbsize") int pithumbsize,
-            @Query("gcmtitle") String gcmtitle
+            @Query("gcmtitle") String gcmtitle,
+            @Query("gcmcontinue") String continueParam
     );
 
     //https://en.wikipedia.org/w/api.php?format=json&action=query&generator=images&prop=imageinfo|pageimages

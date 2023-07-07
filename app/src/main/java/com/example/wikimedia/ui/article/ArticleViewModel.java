@@ -1,5 +1,7 @@
 package com.example.wikimedia.ui.article;
 
+import android.app.Application;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -11,15 +13,19 @@ public class ArticleViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
     private final ArticleRepo articleRepo;
+    private LiveData<ArticleResponse> articleResponseLiveData;
 
-    public ArticleViewModel() {
+    public ArticleViewModel(Application application) {
         this.articleRepo =  new ArticleRepo();
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
     }
 
     public LiveData<ArticleResponse> getRandomArticle(){
-        return articleRepo.getRandomArticleLiveData();
+        return articleResponseLiveData;
+    }
+    public void apicallgetArticles(String grncontinue){
+        articleResponseLiveData= articleRepo.getRandomArticleLiveData(grncontinue);
     }
 
     public LiveData<ArticleResponse> getArticleExtracts(String title){

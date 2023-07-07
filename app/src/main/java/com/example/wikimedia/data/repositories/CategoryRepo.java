@@ -14,6 +14,9 @@ import com.example.wikimedia.data.webservice.RetrofitClient;
 import com.example.wikimedia.utils.UtilService;
 import com.google.gson.Gson;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
@@ -34,11 +37,13 @@ public class CategoryRepo {
     }
 
 
-    public MutableLiveData<CategoryResponse> getCategoryListLiveData(String prefix){
+    public MutableLiveData<CategoryResponse> getCategoryListLiveData(String prefix, String continueParam){
         MutableLiveData<CategoryResponse> data= new MutableLiveData<>();
    //format=json&action=query&list=allcategories&acprefix=List%20of&formatversion=2
+
+
         Observable<Response<CategoryResponse>> observable = apiService.getCategoryList("json","query","allcategories",
-                prefix,2);
+                prefix,2,continueParam);
 
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -82,12 +87,12 @@ public class CategoryRepo {
 
 
 
-    public MutableLiveData<ArticleResponse>  getCategoryMembersArticle(String category){
+    public MutableLiveData<ArticleResponse>  getCategoryMembersArticle(String category,String gcmcontinue){
         MutableLiveData<ArticleResponse> data = new MutableLiveData<ArticleResponse>();
 
 
         Observable<Response<ArticleResponse>> observable= apiService.getCategoryMembersArticle("json","query","categorymembers",
-                "extracts|pageimages", 200,true,true,500,"Category:"+category);
+                "extracts|pageimages", 200,true,true,500,"Category:"+category,gcmcontinue);
 
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

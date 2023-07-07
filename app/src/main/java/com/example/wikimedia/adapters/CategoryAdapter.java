@@ -55,6 +55,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return allcategoryList.size();
     }
 
+    public void submitList(List<Allcategory> allcategoryList){
+        this.allcategoryList= allcategoryList;
+    }
+
     public  class  ViewHolder extends RecyclerView.ViewHolder {
         TextView categoryName;
         public ViewHolder(@NonNull View itemView) {

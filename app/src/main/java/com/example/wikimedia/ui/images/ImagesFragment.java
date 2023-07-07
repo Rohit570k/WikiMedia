@@ -61,9 +61,11 @@ public class ImagesFragment extends Fragment {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         String date = dateFormat.format(currentDate);
 
-        imagesViewModel.getPageOfTheDay(date).observe(getViewLifecycleOwner(), new Observer<ArticleResponse>() {
+        imagesViewModel.getPageOfTheDay().observe(getViewLifecycleOwner(), new Observer<ArticleResponse>() {
             @Override
             public void onChanged(ArticleResponse response) {
+
+                imagesViewModel.articleResponse=response;
 
                 Map<String, Pages> map = response.getQuery().getPages();
                 //Get first value here only value is there

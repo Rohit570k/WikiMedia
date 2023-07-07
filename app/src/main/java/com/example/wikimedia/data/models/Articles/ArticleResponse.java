@@ -10,14 +10,21 @@ public class ArticleResponse {
     @SerializedName("batchcomplete")
     private Boolean batchcomplete;
 
-//    @Expose
-//    @SerializedName("continue")
-//    private Continues total;
+    @Expose
+    @SerializedName("continue")
+    private Continues _continue;
 
     @Expose
     @SerializedName("query")
     private Query query;
 
+    public Continues get_continue() {
+        return _continue;
+    }
+
+    public void set_continue(Continues _continue) {
+        this._continue = _continue;
+    }
 
     public Boolean getBatchcomplete() {
         return batchcomplete;

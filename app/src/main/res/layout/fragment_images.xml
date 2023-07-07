@@ -11,23 +11,24 @@
         style="?attr/materialCardViewElevatedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         app:cardBackgroundColor="@color/white"
         app:cardElevation="8dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="false"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/potd">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_wiki"
             android:maxHeight="500dp"
-            android:maxWidth="300dp"/>
+            android:adjustViewBounds="true"
+            android:src="@drawable/icon_wiki" />
 
     </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
@@ -35,12 +36,13 @@
         android:id="@+id/potd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:text="Picture of the Day "
         android:textColor="@color/black"
         android:textSize="24sp"
-        android:textStyle="normal|italic"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/circularRevealCardView" />

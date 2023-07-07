@@ -12,13 +12,19 @@ public class CategoryArticleViewModel extends ViewModel {
 
     private CategoryRepo categoryRepo;
 
+    private LiveData<ArticleResponse> articleResponseLiveData;
+
     public CategoryArticleViewModel() {
         this.categoryRepo= new CategoryRepo();
 
     }
 
-    public LiveData<ArticleResponse> getCategoryMemberData(String category){
-        return categoryRepo.getCategoryMembersArticle(category);
+    public LiveData<ArticleResponse> getCategoryMemberData(){
+        return articleResponseLiveData;
+    }
+
+    public void apicallgetArticleList(String category,String gcmcontinue){
+        articleResponseLiveData= categoryRepo.getCategoryMembersArticle(category,gcmcontinue);
     }
 
 }

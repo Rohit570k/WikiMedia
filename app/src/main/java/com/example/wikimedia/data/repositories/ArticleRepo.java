@@ -40,12 +40,12 @@ public class ArticleRepo {
         this.compositeDisposable = new CompositeDisposable();
     }
 
-    public MutableLiveData<ArticleResponse>  getRandomArticleLiveData(){
+    public MutableLiveData<ArticleResponse>  getRandomArticleLiveData(String grncontinue){
         MutableLiveData<ArticleResponse> data = new MutableLiveData<ArticleResponse>();
 
 
         Observable<Response<ArticleResponse>> observable= apiService.getArticle("json","query","random",0,
-                                "revisions|pageimages|images","content",10,300);
+                                "revisions|pageimages","content",10,500,grncontinue);
 
          observable.subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
